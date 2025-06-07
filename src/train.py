@@ -64,7 +64,12 @@ def main(cfg):
 
     crit = nn.CrossEntropyLoss()
     opt  = torch.optim.Adam(model.parameters(), lr=cfg.lr)
-    sch  = torch.optim.lr_scheduler.ReduceLROnPlateau(opt,'min',3,0.5)
+    sch  = torch.optim.lr_scheduler.ReduceLROnPlateau(
+          opt,
+          mode='min',
+          factor=0.5,    # μειώνει το lr στο μισό
+          patience=3     # αν δεν βελτιωθεί 3 epochs
+    )
 
     out = Path(cfg.output); out.mkdir(exist_ok=True)
     csv_log = out / f"{cfg.model}_stats.csv"
