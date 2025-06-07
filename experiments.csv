@@ -1,0 +1,2 @@
+run_id,model,kw,img,batch,epochs,val_loss,val_acc,ckpt,curve,notes
+20250607_090947,CNN01,,128,32,10,0.6882620559019201,0.7379182156133829,checkpoints/best_CNN01.pt,checkpoints/CNN01_curve.png,1st Colab run with CNN01 - 5 classes
