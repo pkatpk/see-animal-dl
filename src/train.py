@@ -9,6 +9,11 @@ import numpy as np
 import torch, matplotlib.pyplot as plt
 from torch import nn
 
+import sys
+import os
+sys.path.append(os.path.abspath(os.path.dirname(__file__) + "/.."))
+
+
 # --------------- utils --------------------------------------------------- #
 def set_seed(seed=42):
     random.seed(seed); np.random.seed(seed)
