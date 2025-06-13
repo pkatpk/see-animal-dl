@@ -72,13 +72,13 @@ def main(cfg):
         wr = csv.writer(f); wr.writerow(["epoch","tr_loss","val_loss","tr_acc","val_acc"])
         for ep in range(1, cfg.epochs+1):
             t0 = time.time()
-            tr_loss, tr_acc = train_epoch(model,tr_dl,crit,opt,dev)
-            vl_loss, vl_acc = valid_epoch(model,val_dl,crit,opt,dev)
+            tr_loss, tr_acc = train_epoch(model, tr_dl, crit, opt, dev)
+            vl_loss, vl_acc = valid_epoch(model, val_dl, crit, dev)
 
             tr_L.append(tr_loss); val_L.append(vl_loss)
             tr_A.append(tr_acc);  val_A.append(vl_acc)
 
-            wr.writerow([ep,tr_loss,vl_loss,tr_acc,vl_acc])
+            wr.writerow([ep, tr_loss, vl_loss, tr_acc, vl_acc])
             print(f"[{ep}/{cfg.epochs}] tr {tr_loss:.4f}/{tr_acc:.3f} | "
                   f"vl {vl_loss:.4f}/{vl_acc:.3f}  ({time.time()-t0:.1f}s)")
 
@@ -113,25 +113,25 @@ def main(cfg):
                ckpt=best_pt.as_posix(), curve=curve_png.as_posix(),
                notes=cfg.notes)
     exp = Path("experiments.csv")
-    df=pd.read_csv(exp) if exp.exists() else pd.DataFrame()
-    df=pd.concat([df,pd.DataFrame([row])],ignore_index=True)
-    df.to_csv(exp,index=False); print("✔ logged to experiments.csv")
+    df = pd.read_csv(exp) if exp.exists() else pd.DataFrame()
+    df = pd.concat([df, pd.DataFrame([row])], ignore_index=True)
+    df.to_csv(exp, index=False); print("✔ logged to experiments.csv")
 
 # --------------- CLI ----------------------------------------------------- #
 if __name__ == "__main__":
     pa = argparse.ArgumentParser()
-    pa.add_argument("--data-dir",default="data/see-animals-dataset")
-    pa.add_argument("--model",required=True,
+    pa.add_argument("--data-dir", default="data/see-animals-dataset")
+    pa.add_argument("--model", required=True,
                     help="class name in src.models, e.g. CNN01")
-    pa.add_argument("--model-kw",default="",
+    pa.add_argument("--model-kw", default="",
                     help='extra kwargs JSON, e.g. \'{"drop":0.3}\'')
-    pa.add_argument("--img",type=int,default=128)
-    pa.add_argument("--batch",type=int,default=32)
-    pa.add_argument("--epochs",type=int,default=20)
-    pa.add_argument("--lr",type=float,default=1e-3)
-    pa.add_argument("--seed",type=int,default=42)
-    pa.add_argument("--output",default="checkpoints")
-    pa.add_argument("--notes",default="")
-    pa.add_argument("--patience", type=int, default=3,
+    pa.add_argument("--img", type=int, default=128)
+    pa.add_argument("--batch", type=int, default=32)
+    pa.add_argument("--epochs", type=int, default=100)
+    pa.add_argument("--lr", type=float, default=1e-3)
+    pa.add_argument("--seed", type=int, default=42)
+    pa.add_argument("--output", default="checkpoints")
+    pa.add_argument("--notes", default="")
+    pa.add_argument("--patience", type=int, default=5,
                     help="early stopping patience (epochs without val loss improvement)")
     main(pa.parse_args())
