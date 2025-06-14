@@ -68,6 +68,8 @@ def main(cfg):
     patience = cfg.patience
     epochs_no_improve = 0
 
+    train_start = time.time()
+
     with open(csv_log,"w",newline="") as f:
         wr = csv.writer(f); wr.writerow(["epoch","tr_loss","val_loss","tr_acc","val_acc"])
         for ep in range(1, cfg.epochs+1):
@@ -92,6 +94,8 @@ def main(cfg):
                     print(f"⏹️ Early stopping at epoch {ep} (no improvement for {patience} epochs)")
                     break
 
+    duration = time.time() - train_start
+
     # ----- save learning curves ------------------------------------------ #
     fig, ax1 = plt.subplots(figsize=(6,4))
     ax1.plot(tr_L,label="train loss"); ax1.plot(val_L,label="val loss")
@@ -111,11 +115,12 @@ def main(cfg):
                img=cfg.img, batch=cfg.batch, epochs=ep,
                val_loss=best_val_loss, val_acc=val_A[-1],
                ckpt=best_pt.as_posix(), curve=curve_png.as_posix(),
-               notes=cfg.notes)
+               notes=cfg.notes, duration_sec=round(duration, 1))
     exp = Path("experiments.csv")
     df = pd.read_csv(exp) if exp.exists() else pd.DataFrame()
     df = pd.concat([df, pd.DataFrame([row])], ignore_index=True)
-    df.to_csv(exp, index=False); print("✔ logged to experiments.csv")
+    df.to_csv(exp, index=False)
+    print(f"✔ logged to experiments.csv (duration: {round(duration,1)}s)")
 
 # --------------- CLI ----------------------------------------------------- #
 if __name__ == "__main__":
