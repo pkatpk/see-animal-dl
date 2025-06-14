@@ -1,3 +1,0 @@
-run_id,model,kw,img,batch,epochs,val_loss,val_acc,ckpt,curve,notes,duration_sec
-20250614_090622,CNN01,,128,32,14,0.6796860274146584,0.7769516728624535,checkpoints/best_CNN01.pt,checkpoints/CNN01_curve.png,"lr 0.001, batc 32h",644.0
-20250614_093023,CNN01,,128,64,7,0.7096310026115842,0.7230483271375465,checkpoints/best_CNN01.pt,checkpoints/CNN01_curve.png,"lr 0.001, batc 64h",175.4
