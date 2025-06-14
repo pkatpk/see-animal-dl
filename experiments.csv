@@ -1,0 +1,11 @@
+run_id,model,kw,img,batch,epochs,val_loss,val_acc,ckpt,curve,notes,duration_sec
+20250614_090622,CNN01,,128,32,14,0.6796860274146584,0.7769516728624535,checkpoints/best_CNN01.pt,checkpoints/CNN01_curve.png,"lr 0.001, batc 32h",644.0
+20250614_093023,CNN01,,128,64,7,0.7096310026115842,0.7230483271375465,checkpoints/best_CNN01.pt,checkpoints/CNN01_curve.png,"lr 0.001, batc 64h",175.4
+20250614_104628,CNN01,,128,32,10,0.6088612342582029,0.758364312267658,checkpoints/best_CNN01.pt,checkpoints/CNN01_curve.png,"lr 0.0005, batc 32h",244.7
+20250614_105408,CNN01,,128,64,8,0.6262638999356164,0.7490706319702602,checkpoints/best_CNN01.pt,checkpoints/CNN01_curve.png,"lr 0.0005, batch 64",209.5
+20250614_110221,CNN01,,128,32,12,0.6271171990562888,0.7509293680297398,checkpoints/best_CNN01.pt,checkpoints/CNN01_curve.png,"lr 0.0003, batch 32",287.6
+20250614_111719,CNN01,,128,64,9,0.6120487948258718,0.7843866171003717,checkpoints/best_CNN01.pt,checkpoints/CNN01_curve.png,"lr 0.0003, batch 64",244.3
+20250614_113421,CNN01,,128,32,9,0.6503276667174172,0.7732342007434945,checkpoints/best_CNN01.pt,checkpoints/CNN01_curve.png,"lr 0.0001, batch 32",235.0
+20250614_114309,CNN01,,128,64,14,0.6147491203414069,0.758364312267658,checkpoints/best_CNN01.pt,checkpoints/CNN01_curve.png,"lr 0.0001, batch 64",349.9
+20250614_115616,CNN01,,128,32,23,0.601134766550625,0.7676579925650557,checkpoints/best_CNN01.pt,checkpoints/CNN01_curve.png,"lr 0.00007, batch 32",595.8
+20250614_120558,CNN01,,128,64,14,0.6326727436648475,0.7732342007434945,checkpoints/best_CNN01.pt,checkpoints/CNN01_curve.png,"lr 0.00007, batch 64",352.3
