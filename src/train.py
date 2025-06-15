@@ -123,13 +123,14 @@ def main(cfg):
 
     # -------- experiment log -------------------------------------------- #
     import pandas as pd
-    total_time = round(time.time() - start_time, 2)
+    duration = round(time.time() - start_time, 2)
     row = dict(run_id=datetime.datetime.now().strftime("%Y%m%d_%H%M%S"),
                model=cfg.model, kw=cfg.model_kw,
                img=cfg.img, batch=cfg.batch, epochs=ep,
                val_loss=best, val_acc=val_A[-1],
                ckpt=best_pt.as_posix(), curve=curve_png.as_posix(),
-               notes=cfg.notes, time=total_time)
+               notes=cfg.notes, duration_sec=duration)
+
     exp = Path("experiments.csv")
     df = pd.read_csv(exp) if exp.exists() else pd.DataFrame()
     df = pd.concat([df, pd.DataFrame([row])], ignore_index=True)
