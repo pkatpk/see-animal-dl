@@ -47,9 +47,16 @@ def evaluate(model, dataloader, device, class_names):
     print(f"\n✅ Test Accuracy: {acc:.4f}")
     print(f"🔍 Test Loss    : {avg_loss:.4f}\n")
 
+    report = classification_report(y_true, y_pred, target_names=class_names)
     print("📊 Classification Report:\n")
-    print(classification_report(y_true, y_pred, target_names=class_names))
+    print(report)
 
+    # Save classification report
+    with open("classification_report.txt", "w") as f:
+        f.write(report)
+    print("📝 Saved classification_report.txt")
+
+    # Save confusion matrix
     cm = confusion_matrix(y_true, y_pred)
     plt.figure(figsize=(8, 6))
     sns.heatmap(cm, annot=True, fmt="d", xticklabels=class_names, yticklabels=class_names, cmap="Blues")
