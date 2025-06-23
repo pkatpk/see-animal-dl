@@ -1,10 +1,17 @@
 import torch.nn as nn
-import torchvision.models as models
 
 # ---------------------------------------------------------------------
-#  CNN01
+#  CNN01  (8-16-32)  – σούπερ μίνιμαλ
 # ---------------------------------------------------------------------
 class CNN01(nn.Module):
+    """
+    Super-minimal CNN:
+        Conv(3→8)  → BN → ReLU → MaxPool
+        Conv(8→16) → BN → ReLU → MaxPool
+        Conv(16→32)→ BN → ReLU → MaxPool
+        Flatten → FC(32*H*W → 128) → ReLU → Dropout
+                 → FC(128 → num_classes)
+    """
     def __init__(self, num_classes: int, img_size: int = 128):
         super().__init__()
         self.features = nn.Sequential(
@@ -12,7 +19,7 @@ class CNN01(nn.Module):
             nn.Conv2d(8, 16, 3, padding=1),  nn.BatchNorm2d(16),  nn.ReLU(), nn.MaxPool2d(2),
             nn.Conv2d(16, 32, 3, padding=1), nn.BatchNorm2d(32),  nn.ReLU(), nn.MaxPool2d(2),
         )
-        flat = 32 * (img_size // 8) * (img_size // 8)
+        flat = 32 * (img_size // 8) * (img_size // 8)        # ↓3 MaxPool → /8
         self.classifier = nn.Sequential(
             nn.Flatten(),
             nn.Linear(flat, 128), nn.ReLU(), nn.Dropout(0.4),
@@ -23,10 +30,14 @@ class CNN01(nn.Module):
         x = self.features(x)
         return self.classifier(x)
 
+
 # ---------------------------------------------------------------------
-#  CNN02
+#  CNN02  (32-64-128)  – το προηγούμενο «MinimalCNN»
 # ---------------------------------------------------------------------
 class CNN02(nn.Module):
+    """
+    3-layer CNN με 32-64-128 filters (όπως το παλιό MinimalCNN).
+    """
     def __init__(self, num_classes: int, img_size: int = 128):
         super().__init__()
         self.features = nn.Sequential(
@@ -44,23 +55,3 @@ class CNN02(nn.Module):
     def forward(self, x):
         x = self.features(x)
         return self.classifier(x)
-
-# ---------------------------------------------------------------------
-#  ResNet18 Pretrained (Transfer Learning)
-# ---------------------------------------------------------------------
-class ResNetTransfer(nn.Module):
-    def __init__(self, num_classes: int, img_size: int = 224, drop: float = 0.3):
-        super().__init__()
-        self.resnet = models.resnet18(pretrained=True)
-
-        for param in self.resnet.parameters():
-            param.requires_grad = False  # Freeze base
-
-        in_features = self.resnet.fc.in_features
-        self.resnet.fc = nn.Sequential(
-            nn.Dropout(drop),
-            nn.Linear(in_features, num_classes)
-        )
-
-    def forward(self, x):
-        return self.resnet(x)

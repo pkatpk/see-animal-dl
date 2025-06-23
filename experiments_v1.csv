@@ -1,7 +1,0 @@
-run_id,model,kw,img,batch,epochs,val_loss,val_acc,ckpt,curve,notes
-20250613_174515,CNN01,,128,32,9,0.6503635259235606,0.7806691449814126,checkpoints/best_CNN01.pt,checkpoints/CNN01_curve.png,"lr 0.0001, batch 32h"
-20250613_192650,CNN02,,128,32,12,0.6775587990003473,0.758364312267658,checkpoints/best_CNN02.pt,checkpoints/CNN02_curve.png,"lr 0.001, batc 32h"
-20250613_203125,CNN02,,128,64,11,0.6920722954803042,0.5762081784386617,checkpoints/best_CNN02.pt,checkpoints/CNN02_curve.png,"lr 0.001, batc 32h"
-20250613_205548,CNN02,,128,32,9,0.594870429705171,0.7936802973977695,checkpoints/best_CNN02.pt,checkpoints/CNN02_curve.png,"lr 0.0001, batc 32h"
-20250613_221339,CNN02,,128,64,18,0.5813305113050673,0.7806691449814126,checkpoints/best_CNN02.pt,checkpoints/CNN02_curve.png,"lr 0.0001, batc 64h"
-20250613_224059,CNN02,,128,32,10,0.6038369799361509,0.741635687732342,checkpoints/best_CNN02.pt,checkpoints/CNN02_curve.png,"lr 0.0003, batc 32h"
