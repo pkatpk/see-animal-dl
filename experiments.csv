@@ -19,3 +19,6 @@ run_id,model,kw,img,batch,epochs,val_loss,val_acc,ckpt,curve,notes,duration_sec
 20250615_072444,CNN02,,128,32,12,0.6775587990003473,0.758364312267658,checkpoints/best_CNN02.pt,checkpoints/CNN02_curve.png,"lr 0.001, batc 32h",1379.45
 20250615_075003,CNN02,,128,64,11,0.6920722954803042,0.5762081784386617,checkpoints/best_CNN02.pt,checkpoints/CNN02_curve.png,"lr 0.001, batc 64h",1346.59
 20250615_080709,CNN02,,128,32,9,0.6796524051357719,0.7565055762081785,checkpoints/best_CNN02.pt,checkpoints/CNN02_curve.png,"lr 0.0005, batc 32h",957.9
+20250623_091147,CNN02,,224,32,12,0.8192335156833425,0.7137546468401487,checkpoints/best_CNN02.pt,checkpoints/CNN02_curve.png,", im 224,lr 0.001, batc 64h",5326.45
+20250623_110446,CNN02,,224,32,12,0.8192335156833425,0.7137546468401487,checkpoints/best_CNN02.pt,checkpoints/CNN02_curve.png,", im 224,lr 0.001, batch 64h",5068.74
+20250623_133427,ResNetTransfer,,224,32,30,0.05988036685020608,0.983271375464684,checkpoints/best_ResNetTransfer.pt,checkpoints/ResNetTransfer_curve.png,"ResNetTransfer, img 224, lr 0.0003, batch 32",8425.04
