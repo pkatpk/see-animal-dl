@@ -1,0 +1,11 @@
+              precision    recall  f1-score   support
+
+   JellyFish       0.96      0.98      0.97        55
+  SeaUrchins       1.00      0.95      0.97        57
+      Sharks       0.98      1.00      0.99        53
+    Starfish       1.00      1.00      1.00        49
+     turtles       0.94      0.96      0.95        53
+
+    accuracy                           0.98       267
+   macro avg       0.98      0.98      0.98       267
+weighted avg       0.98      0.98      0.98       267
