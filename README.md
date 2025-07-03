@@ -27,7 +27,7 @@ https://colab.research.google.com/drive/13-W0WvcVGKc-I15UlMUwi2A4AMgdNxpw?usp=sh
 ## Παρουσίαση
 Η παρουσίαση του project βρίσκεται στο φάκελο `slides`:
 
-[`Final_Presentation_CNN_ResNet_SeaAnimals.pptx`](slides/Final_Presentation_CNN_ResNet_SeaAnimals.pptx
+[`Presentation_CNN_ResNet_SeaAnimals.pptx`](slides/Presentation_CNN_ResNet_SeaAnimals.pptx
 
 ## ✍️ Ομάδα
 - Γιουλάτου Άννα Βασιλική
